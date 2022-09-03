@@ -1,25 +1,35 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Form } from './components/LoginForm';
+import styled from 'styled-components';
+import {theme} from "./components/theme"
+import { Header } from './components/Header';
+
+const Main = styled.main`
+  width:100%;
+  background-color: ${theme.main.background};
+  display: flex;
+  justify-content: center;
+  flex: 1 1 auto;
+`
+const Wrapper = styled.div`
+  width:100vw;
+  height:100vh;
+  display: flex;
+  flex-direction: column;
+`
+
+const LoginForm = styled(Form)`
+  margin-top:14px;
+`
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Wrapper>
+      <Header/>
+      <Main className="App">
+        <LoginForm/>
+      </Main>
+    </Wrapper>
   );
 }
 
