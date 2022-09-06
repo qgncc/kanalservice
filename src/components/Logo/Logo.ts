@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export default styled.img.attrs({src:"/logo.png"})`
+export const Logo = styled.img.attrs({src:"/logo.png"})`
     @media screen and (max-width: 320px){
         width:70px;
     }

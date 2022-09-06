@@ -4,7 +4,7 @@ import { theme } from "../theme"
 
 
 
-export default styled.button`
+export const Button =  styled.button`
     font-size: 2rem;
     font-weight: 800;
     border: 0;

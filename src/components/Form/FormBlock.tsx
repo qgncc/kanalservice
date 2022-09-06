@@ -1,13 +1,12 @@
 import { Props } from "../../types"
-import LoginTitle from "./LoginTitle"
-import InputText from "./InputText"
-import Label from "./Label"
-import SubmitButton from "./SubmitButton"
+import LoginTitle from "./elements/LoginTitle"
+import InputText from "./elements/InputText"
+import Label from "./elements/Label"
+import SubmitButton from "./elements/SubmitButton"
 import { theme } from "../theme"
 import styled from "styled-components"
 
 interface LoginFormProps extends Props{
-    className?: string;
 } 
 
 const FormStyled = styled.form`
@@ -28,8 +27,8 @@ const FormStyled = styled.form`
 
 export const Form = ({className} : LoginFormProps)=>{
     return(
-        <FormStyled className={className}>
-            <LoginTitle>Autorization</LoginTitle>
+        <FormStyled className={className?className:""}>
+            <LoginTitle position="center">Autorization</LoginTitle>
             <Label htmlFor="login">login</Label>
             <InputText type="text" id="login"/>
             <Label htmlFor="password">password</Label>
