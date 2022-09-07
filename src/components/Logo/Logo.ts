@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const Logo = styled.img.attrs({src:"/logo.png"})`
-    @media screen and (max-width: 320px){
+    @media screen and (max-width: 500px){
         width:70px;
     }
     width:273px;

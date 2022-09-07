@@ -2,9 +2,7 @@ import { useState } from "react";
 import styled from "styled-components";
 import { Props } from "../../types";
 import { theme } from "../theme";
-import { Text } from "./elements/Text";
-import { Image } from "./elements/Image";
-import { LoadingBlock } from "./elements/LoadingBlock";
+import { LoadingBlock, PostHeader, UserInfo, Text, Image } from "./elements";
 
 interface PostProps extends Props{
     author?: string,
@@ -30,29 +28,16 @@ const PostStyled = styled.article`
         min-width:300px;
         max-width: 325px;
     }
-    @media screen and (min-width:744px){
+    @media screen and (min-width:745px){
         padding: 25px 25px 41px;
         min-width:300px;
         width: 50%;
         max-width: 467px;
     }
     border-color: ${theme.main.primary};
-    
+    box-shadow: 0 4px 10px -3px #000000;
 `
-const PostHeader = styled.div`
-    display: flex;
-    flex-direction: column;
-    @media screen and (min-width:744px){
-        flex-direction: row;
-    }
-`
-const UserInfo = styled.div`
-    display: flex;
-    flex-direction: column;
-    @media screen and (min-width:744px){
-        margin-left: 8px;
-    }
-`
+
 
 
 export const Post = ({ author, company, title, content, image, className }: PostProps)=>{

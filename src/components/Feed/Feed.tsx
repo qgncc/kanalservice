@@ -1,13 +1,18 @@
+import { useEffect } from "react";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import useFetchPosts from "../../shared/hooks/useFetchPosts";
+import { RootState } from "../../shared/redux/store";
 import Post from "../Post"
+
 
 const FeedBlock = styled.div`
   display: flex;
   padding: 0 37px;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: center;
   max-width: 964px;
   @media screen and (min-width:321px){
     padding: 0 27px;
@@ -34,7 +39,15 @@ const PostElement = styled(Post)`
 `
 
 export const Feed = ()=>{
-  const {error, data} = useFetchPosts();
+  const {data} = useFetchPosts();
+  const isLoggedIn = useSelector<RootState, boolean>((state)=>state.auth.isLoggedIn)
+  const navigate = useNavigate();
+
+  useEffect(()=>{
+    if(!isLoggedIn){
+      navigate("/");
+    }
+  },[isLoggedIn, navigate])
 
   const posts = data? data.map((post)=>{
     return <PostElement title={post.title} 
@@ -44,11 +57,11 @@ export const Feed = ()=>{
                         image={post.photo.thumbnailUrl}
                         key={post.id}
             /> 
-  }): (new Array(10)).fill(<PostElement/>)
+  }): [<PostElement key="1"/>,<PostElement key="2"/>,<PostElement key="3"/>,<PostElement key="4"/>]
 
   return(
     <FeedBlock>
-      {posts}
+      {isLoggedIn? posts: null}
     </FeedBlock>
   )
     
